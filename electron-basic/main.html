@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electron dersleri</title>
+    <link rel="stylesheet" href="assets/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container pt-5">
+        <h1 class="text-center">Electron derleri 1</h1>
+        <div class="row">
+            <div class="col-md-8 offset-2 mt-2">
+                <input class="input" type="text" id="value">
+                <button class="btn btn-primary" id="sendBtn">Save</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 offset-2 mt-5">
+                <button class="btn btn-block btn-warning" id="openNewBtn"> Yeni Sayfa Aç</button>
+            </div>
+        </div>
+
+       
+       
+    </div>
+
+    <script>
+
+        const electron = require("electron")
+        const {ipcRenderer} = electron
+
+        let sendBtn = document.querySelector("#sendBtn")
+        const inputValue = document.querySelector("#value")
+        const openNewBtn = document.querySelector("#openNewBtn")
+
+
+        sendBtn.addEventListener("click",()=> {
+           // ipcRenderer.send("key","deneme veri gönderme electron.js")
+
+           ipcRenderer.send("key:inputValue" , inputValue.value)
+        })
+
+        openNewBtn.addEventListener("click",()=> {
+            ipcRenderer.send("key:newWindow")
+        })
+
+    </script>
+    
+</body>
+</html>
+
