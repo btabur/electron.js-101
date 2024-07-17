@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-   "start":"electron ."
+    "start": "electron ."
   },
   "author": "Balı Tabur | web tasarım merkezi",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "electron": "^31.2.0"
+    "electron": "^31.2.0",
+    "electronmon": "^2.0.3"
   }
 }
-
