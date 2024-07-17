@@ -40,14 +40,19 @@ app.on("ready", () => {
         text:data
       })
      mainWindow.webContents.send("todo:addItem",todoList)
-     console.log('Sending todoList:', todoList);
-
+   
    
       addWindow.close() 
       addWindow=null;
     }
     
   });
+
+  ipcMain.on("removeTodo:id",(event,data)=> {
+
+    removeTodoById(data)
+
+  })
 
 
 });
@@ -128,4 +133,8 @@ function createAddWindow() {
 
 function getTodoList(){
   console.log(todoList);
+}
+
+function removeTodoById(id) {
+  todoList = todoList.filter(todo => todo.id !== id);
 }
