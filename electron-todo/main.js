@@ -2,6 +2,8 @@ const electron = require("electron");
 const url = require("url");
 const path = require("path");
 
+const db = require("./lib/connection").db
+
 
 const { app, BrowserWindow, Menu, ipcMain } = electron;
 
@@ -41,17 +43,25 @@ app.on("ready", () => {
       })
      mainWindow.webContents.send("todo:addItem",todoList)
    
-   
+    
       addWindow.close() 
-      addWindow=null;
+        addWindow=null;
+      
     }
     
-  });
+  });             
+
+  
 
   ipcMain.on("removeTodo:id",(event,data)=> {
+    removeTodoById(data);
+    mainWindow.webContents.send("todo:addItem",todoList)
 
-    removeTodoById(data)
+  })
 
+  ipcMain.on("addTodo:show", ()=>  {
+   
+    createAddWindow()
   })
 
 

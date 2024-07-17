@@ -1,10 +1,14 @@
 const { ipcRenderer } = require("electron");
+const saveBtn = document.querySelector("#saveBtn2")
+const total = document.querySelector("#total")
 
 checkTodoCount();
 
 ipcRenderer.on("todo:addItem", (event, todoList) => {
   const container = document.querySelector(".todo-container");
   container.innerHTML = ''; // Eski listeyi temizler
+
+  total.innerText=`Toplam ${todoList.length}  todo var`
 
   todoList.forEach(todo => {
     const row = document.createElement("div");
@@ -40,6 +44,14 @@ ipcRenderer.on("todo:addItem", (event, todoList) => {
 
   checkTodoCount();
 });
+
+
+saveBtn.addEventListener("click",()=> {
+
+  ipcRenderer.send("addTodo:show")
+})
+
+
 
 function checkTodoCount() {
   const container = document.querySelector(".todo-container");

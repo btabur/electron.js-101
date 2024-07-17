@@ -42,5 +42,12 @@
            ipcRenderer.send("newTodo:save", todoValue.value)
        })
 
+       todoValue.addEventListener("keypress",e => {
+            if(e.keyCode ==13){
+                ipcRenderer.send("newTodo:save",e.target.value)
+                e.target.value=""
+            }
+       })
+
 </script>
 </html>
