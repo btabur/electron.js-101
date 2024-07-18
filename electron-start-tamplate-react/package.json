@@ -1,0 +1,21 @@
+{
+  "name": "electron-projects",
+  "version": "0.0.1",
+  "description": "this is dummy app",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"electron .",
+    "dev:watch":"npx electronmon --trace-warnings ."
+  },
+  "keywords": [
+    "electron",
+    "react.js",
+    "typescript"
+  ],
+  "author": "Balı Tabur",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^31.2.1"
+  }
+}
